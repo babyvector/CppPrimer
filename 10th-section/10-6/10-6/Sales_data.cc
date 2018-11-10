@@ -80,9 +80,3 @@ print(ostream &os, const Sales_data &item)
 	   << item.revenue << " " << item.avg_price();
 	return os;
 }
-
-using namespace std;
-int main(){
-	cout << "hello world"<<endl;
-	return 0;
-}
