@@ -3,45 +3,46 @@
 #include<vector>
 #include<list>
 #include<string>
+#include<functional>
+
 using namespace std;
+using namespace std ::placeholders;
 template<class T>
-void print(T input_T){
-	for (auto i : input_T){
+void print(T input_T) {
+	for (auto i : input_T) {
 		cout << i << endl;
 	}
 }
-void elimDups(vector<string>& words){
+void elimDups(vector<string>& words) {
 	sort(words.begin(), words.end());
 	//按照字典进行排序
 	auto end_unique = unique(words.begin(), words.end());
 	//end_unique返回处理过重复字符串之后的字符串数组的尾迭代器
 	words.erase(end_unique, words.end());
 }
-void biggies(vector<string>&words,
-				vector<string>::size_type&sz){
-	elimDups(words);
+bool checkSize(string&input_string , unsigned int sz) {
+	return input_string.length() < sz;
+}
+void find_first(int nun_in_vector) {
 	
-	stable_sort(words.begin(), 
-				words.end(), 
-				//这一点需要注意的是：当参数列表是引用类型的时候，前面不加const运行时报错
-				//具体原因以后探究
-				[](const string& s1, const string& s2){return s1.size() < s2.size(); });
-
-	for_each(
-		find_if(words.begin(), words.end(), [sz](const string& s3){return s3.size() > sz; }), 
-		words.end(), 
-		[](const string &s4){cout << s4 << " "; }); 
-
-	cout << endl;
+	return ;
 }
 int main(){
 	//实现自己的elimDups
-	vector<string>string_container =
-	{ "the", "quick", "red", "fox", "jumps", "over", "the", "slow", "red", "title" };
-	vector<string>::size_type sz = 4;
-	biggies(string_container,sz);
+	string temp_string = "Name";
+	vector<unsigned int>int_container = { 1,2,3,4,5,6,7,8,9,10 };
+	
+	auto find_fisrt = bind(checkSize,temp_string,_1);
 
+	for (unsigned int i = 0; i < int_container.size();i++) {
+		if (find_fisrt(int_container[i]) ) {
+			cout << "the first bigger than the length of string temp_string is " << i << endl;
+			break;
+		}
+	}
 	return 0;
 }
 
+
+//jumps quick title
 
