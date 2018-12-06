@@ -1,48 +1,38 @@
 #include<iostream>
-#include<algorithm>
+#include<iterator>
 #include<vector>
 #include<list>
-#include<string>
-#include<functional>
-
+#include<algorithm>
 using namespace std;
-using namespace std ::placeholders;
-template<class T>
-void print(T input_T) {
-	for (auto i : input_T) {
-		cout << i << endl;
-	}
-}
-void elimDups(vector<string>& words) {
-	sort(words.begin(), words.end());
-	//按照字典进行排序
-	auto end_unique = unique(words.begin(), words.end());
-	//end_unique返回处理过重复字符串之后的字符串数组的尾迭代器
-	words.erase(end_unique, words.end());
-}
-bool checkSize(string&input_string , unsigned int sz) {
-	return input_string.length() < sz;
-}
-void find_first(int nun_in_vector) {
+int main() {
 	
-	return ;
-}
-int main(){
-	//实现自己的elimDups
-	string temp_string = "Name";
-	vector<unsigned int>int_container = { 1,2,3,4,5,6,7,8,9,10 };
-	
-	auto find_fisrt = bind(checkSize,temp_string,_1);
 
-	for (unsigned int i = 0; i < int_container.size();i++) {
-		if (find_fisrt(int_container[i]) ) {
-			cout << "the first bigger than the length of string temp_string is " << i << endl;
-			break;
-		}
+	vector<int> int_container = {1,2,3,4,5,6,7,8,9};
+	vector<int> get_items_from_int_container1,
+				get_items_from_int_container3;
+	list<int>	get_items_from_int_container2;
+	copy(int_container.begin(),int_container.end(),
+		 back_inserter(get_items_from_int_container1));
+	//1 2 ...
+	copy(int_container.begin(), int_container.end(),
+		 front_inserter(get_items_from_int_container2));
+	//9 8 ...
+	copy(int_container.begin(), int_container.end(),
+		 inserter(get_items_from_int_container3,get_items_from_int_container3.begin()));
+	//9 8 ... //最后一个预测错误，注意书上的358页
+	//输出
+	cout << "get_items_from_int_container1" << endl;
+	for (auto item:get_items_from_int_container1) {
+		cout << item << endl;
 	}
+	cout << "get_items_from_int_container2" << endl;
+	for (auto item : get_items_from_int_container2) {
+		cout << item << endl;
+	}
+	cout << "get_items_from_int_container3" << endl;
+	for (auto item : get_items_from_int_container3) {
+		cout << item << endl;
+	}
+
 	return 0;
 }
-
-
-//jumps quick title
-
