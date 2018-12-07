@@ -1,38 +1,34 @@
 #include<iostream>
+#include<fstream>
 #include<iterator>
 #include<vector>
 #include<list>
 #include<algorithm>
+#include<string>
 using namespace std;
 int main() {
 	
+	istream_iterator<int>int_it(cin);	//从cin读取int
+	istream_iterator<int>int_eof;		//尾后迭代器
+	ifstream in("afile");				//#include<fstream>
+	istream_iterator<string>str_it(in); //从"afile"读取字符串
 
-	vector<int> int_container = {1,2,3,4,5,6,7,8,9};
-	vector<int> get_items_from_int_container1,
-				get_items_from_int_container3;
-	list<int>	get_items_from_int_container2;
-	copy(int_container.begin(),int_container.end(),
-		 back_inserter(get_items_from_int_container1));
-	//1 2 ...
-	copy(int_container.begin(), int_container.end(),
-		 front_inserter(get_items_from_int_container2));
-	//9 8 ...
-	copy(int_container.begin(), int_container.end(),
-		 inserter(get_items_from_int_container3,get_items_from_int_container3.begin()));
-	//9 8 ... //最后一个预测错误，注意书上的358页
-	//输出
-	cout << "get_items_from_int_container1" << endl;
-	for (auto item:get_items_from_int_container1) {
+
+	istream_iterator<int>in_iter(cin);	//从cin读取int
+	istream_iterator<int>eof;			//istream尾后迭代器
+	vector<int>vec;
+	//解引用迭代器，获得从流读取的前一个值
+	while (in_iter != eof)
+		vec.push_back(*in_iter++);
+	cout << "the vec value is:" << endl;
+	for (auto item:vec) {
 		cout << item << endl;
 	}
-	cout << "get_items_from_int_container2" << endl;
-	for (auto item : get_items_from_int_container2) {
-		cout << item << endl;
-	}
-	cout << "get_items_from_int_container3" << endl;
-	for (auto item : get_items_from_int_container3) {
-		cout << item << endl;
-	}
+
+	istream_iterator<int> in_iter(cin), eof;//从cin中读取int
+	vector<int> vec(in_iter,eof);//使用迭代器构造一个容器
+
+
 
 	return 0;
 }
