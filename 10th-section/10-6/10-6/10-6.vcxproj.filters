@@ -26,5 +26,8 @@
     <ClInclude Include="Sales_data.h">
       <Filter>源文件</Filter>
     </ClInclude>
+    <ClInclude Include="Sales_item.h">
+      <Filter>源文件</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

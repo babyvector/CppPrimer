@@ -5,29 +5,16 @@
 #include<list>
 #include<algorithm>
 #include<string>
+#include"Sales_item.h"
+
 using namespace std;
-int main() {
+int main(){
+
+	vector<Sales_item>sales_item_container{ {"original",2,15.99},{"hoking",4,20.99},{"units states",3,19.99},{"what is that",1,12.50} };
+	sort(sales_item_container.begin(),sales_item_container.end(), compareIsbn);
+	for (auto item : sales_item_container)
+		cout << "the sorted items: "<<item.isbn() <<endl;
 	
-	istream_iterator<int>int_it(cin);	//从cin读取int
-	istream_iterator<int>int_eof;		//尾后迭代器
-	ifstream in("afile");				//#include<fstream>
-	istream_iterator<string>str_it(in); //从"afile"读取字符串
-
-
-	istream_iterator<int>in_iter(cin);	//从cin读取int
-	istream_iterator<int>eof;			//istream尾后迭代器
-	vector<int>vec;
-	//解引用迭代器，获得从流读取的前一个值
-	while (in_iter != eof)
-		vec.push_back(*in_iter++);
-	cout << "the vec value is:" << endl;
-	for (auto item:vec) {
-		cout << item << endl;
-	}
-
-	istream_iterator<int> in_iter(cin), eof;//从cin中读取int
-	vector<int> vec(in_iter,eof);//使用迭代器构造一个容器
-
 
 
 	return 0;
