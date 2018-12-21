@@ -20,7 +20,7 @@ int main(){
 		}
 	}
 	if (temp_re_iterator == int_container.rend()) {
-		cout << "find none." << endl;
+		cout << "find none" << endl;
 	}
 	else {
 		int n = 0;
@@ -28,7 +28,7 @@ int main(){
 			temp_re_iterator++;
 			n++;
 		}
-		cout << "find 0 in "<<n<<"th."<< endl;
+		cout << "find 0 in "<<n<<"th ."<< endl;
 	}
 
 	return 0;
